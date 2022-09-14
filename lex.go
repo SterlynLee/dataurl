@@ -508,9 +508,8 @@ Loop:
 		switch r := l.next(); {
 		case r == eof:
 			break Loop
-		case isURLCharRune(r) || l.seenUtf8Item:
+		//fix(yuanjun): accept all bytes in data field
 		default:
-			return l.errorf("invalid data character")
 		}
 	}
 	if l.pos > l.start {
